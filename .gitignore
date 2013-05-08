@@ -33,3 +33,8 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+#Store
+.DS_Store
+#folder
+datasci_course_materials
