@@ -36,5 +36,5 @@ nosetests.xml
 
 #Store
 .DS_Store
-#folder
-datasci_course_materials
+#Data
+output.txt
