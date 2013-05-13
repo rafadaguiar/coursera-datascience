@@ -18,9 +18,7 @@ def tweet_score(sent_scores, tweet):
             score += sent_scores[word]
         else:
             newWords.append(word)
-    for w in newWords:
-        print w+" "+str(score/len(words))
-    #print "--"
+    return [tweet, score, newWords]
 
 
 def main():
@@ -28,8 +26,16 @@ def main():
     tweet_file = open(sys.argv[2])
     sent_scores = sentiment_ref(sent_file)
 
+    response = []
     for line in tweet_file.readlines():
-        tweet_score(sent_scores, line)
+        response.append(tweet_score(sent_scores, line))
+    score = 0.0
+    for resp in response:
+        for newword in resp[2]:
+            for r in response:
+                if newword in r[0]:
+                    score += r[1]/len(r[0])
+            print "%s %f" % (newword, score)
 
 if __name__ == '__main__':
     main()

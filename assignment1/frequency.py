@@ -17,7 +17,7 @@ def relative(freqdict):
 
 def main():
     tweet_file = open(sys.argv[1])
-    words = tweet_file.read().decode("utf8").split()
+    words = tweet_file.read().split()
     relative(get_counts(words))
 
 

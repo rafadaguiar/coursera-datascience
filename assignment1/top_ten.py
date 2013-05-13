@@ -17,8 +17,8 @@ def parser_hashtag(response):
         result = json.loads(line.strip())
         if 'entities' in result.keys():
             if 'hashtags' in result['entities'].keys() and result['entities']['hashtags'] != []:
-                # print result['entities']['hashtags'][0]['text']
-                hashtags.append(result['entities']['hashtags'][0]['text'])
+                for hashtag in result['entities']['hashtags']:
+                    hashtags.append(hashtag['text'])
     return hashtags
 
 
