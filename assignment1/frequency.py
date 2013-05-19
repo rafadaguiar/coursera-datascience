@@ -1,5 +1,15 @@
 from collections import defaultdict
 import sys
+import json
+
+
+def parser_words(response):
+    words = []
+    for line in response:
+        result = json.loads(line.strip())
+        if 'text' in result.keys():
+            words += result['text'].encode("utf8").split()
+    return words
 
 
 def get_counts(seq):
@@ -17,7 +27,7 @@ def relative(freqdict):
 
 def main():
     tweet_file = open(sys.argv[1])
-    words = tweet_file.read().split()
+    words = parser_words(tweet_file)
     relative(get_counts(words))
 
 
