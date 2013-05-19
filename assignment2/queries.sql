@@ -9,3 +9,5 @@ select count(term) from (select term from Frequency where docid = "10398_txt_ear
 select count(term) from Frequency where term like 'parliament';
 #5
 select count(docid) from (select sum(count) as c1, docid from Frequency group by docid) where c1 > 300;
+#6
+select distinct count(docid) from (select docid from Frequency Where term = 'transaction' INTERSECT select docid from Frequency Where term = 'world');
